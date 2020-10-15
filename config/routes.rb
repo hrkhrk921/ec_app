@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   resource :customer,only: [:show]
   resource :cart_item
   resource :delivery
-  resources :item
-  resource :order_item
-  resource :order
+  resources :item,only: [:show,:index]
+  resources :orders,only: [:new,:create,:index,:show] do
+    get "/order/finish" => "orders#finish"
+    get "order/confirm" => "orders#confirm"
+    post "/order/confirm" => "orders#confirm"
+  end
+    patch "/orders/:id" => "order_items#update"
 
 #管理者
   namespace :admin do

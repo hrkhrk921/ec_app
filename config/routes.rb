@@ -9,8 +9,10 @@ Rails.application.routes.draw do
     get "customer/confirm" => "customers#confirm"
     put "customer/hide" => "customers#hide"
   end
-  resource :cart_item
-  resource :delivery
+  resource :cart_item,only: [:index,:create,:update,:destroy] do
+    delete "cart_items" => "cart_items#destroy_all"
+  end
+  resource :delivery,only: [:index,:edit,:create,:update,:destroy]
   resources :item,only: [:show,:index]
   resources :orders,only: [:new,:create,:index,:show] do
     get :finish, on: :collection

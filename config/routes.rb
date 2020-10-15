@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   resource :delivery
   resources :item,only: [:show,:index]
   resources :orders,only: [:new,:create,:index,:show] do
-    get "/order/finish" => "orders#finish"
-    get "order/confirm" => "orders#confirm"
-    post "/order/confirm" => "orders#confirm"
+    get :finish, on: :collection
+    get :confirm, on: :collection
+    post :confirm, on: :collection
   end
-    patch "/orders/:id" => "order_items#update"
+  patch "/orders/:id" => "order_items#update"
 
 #管理者
   namespace :admin do

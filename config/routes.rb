@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  
   get "/about" => "home#about"
   devise_for :customers
   devise_for :admins
 #お客様
-  resource :customer,only: [:show]
+  resource :customer,only: [:show,:edit,:update] do
+    get "/customer/confirm" => "customers#confirm"
+    put "/customer/confirm" => "customers#hide"
+  end
   resource :cart_item
   resource :delivery
   resources :item,only: [:show,:index]

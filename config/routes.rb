@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
 #管理者
   namespace :admin do
-    get "home" => "home#top"
+    get "top" => "home#top"
     resources :orders,only: [:index,:show,:update]
     resources :genres,only: [:index,:edit,:create,:update]
     resources :items,expect: [:destroy]

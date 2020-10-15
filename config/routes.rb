@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :customers
   devise_for :admins
 #お客様
-  resource :customer,only: [:show,:edit,:update] do
-    get "/customer/confirm" => "customers#confirm"
-    put "/customer/confirm" => "customers#hide"
+  resource :customer,only: [:show,:update] do
+    get "customer/emend" => "customers#emend"
+    get "customer/confirm" => "customers#confirm"
+    put "customer/hide" => "customers#hide"
   end
   resource :cart_item
   resource :delivery

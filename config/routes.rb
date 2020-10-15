@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get :confirm, on: :collection
     post :confirm, on: :collection
   end
-  patch "/orders/:id" => "order_items#update"
+  patch "/order_items/:id" => "order_items#update"
 
 #管理者
   namespace :admin do

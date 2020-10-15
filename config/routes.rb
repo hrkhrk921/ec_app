@@ -23,9 +23,9 @@ Rails.application.routes.draw do
 
 #管理者
   namespace :admin do
-    resources :orders
-    resources :genres
-    resources :items
-    resources :customer
+    resources :orders,only: [:index,:show,:update]
+    resources :genres,only: [:index,:edit,:create,:update]
+    resources :items,expect: [:destroy]
+    resources :customer,only: [:index,:edit,:show,:update]
   end
 end

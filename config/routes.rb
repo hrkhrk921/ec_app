@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     put "customer/hide" => "customers#hide"
   end
   resource :cart_item,only: [:index,:create,:update,:destroy] do
-    delete "cart_items" => "cart_items#destroy_all"
+    delete :destroy_all, on: :collection
   end
   resource :delivery,only: [:index,:edit,:create,:update,:destroy]
   resources :item,only: [:show,:index]

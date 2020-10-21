@@ -37,6 +37,15 @@ class CustomerDevises::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  before_action :configure_permitted_parameters,if: :devise_controller?, except: :update
+  def after_sign_up_path_for(resource)
+    flash[:notice] = "ようこそ、Nagano cakeへ"
+    root_path
+  end
+  def after_update_path_for(resource)
+    flash[:notice] = "パスワードの変更に成功しました。"
+    customers_emend_path
+  end
 
   protected
   def configure_permitted_parameters

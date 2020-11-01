@@ -1,4 +1,7 @@
 <div class="row">
+  <h2>ジャンル一覧</h2>
+</div>
+<div class="row">
   <%= form_with(@genre, url:{controller: "admin/genres",action: "create"}) do |f| %>
   <label>ジャンル名</label>
   <%= f.text_field :name %>

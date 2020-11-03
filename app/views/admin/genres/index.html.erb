@@ -24,7 +24,7 @@
       <tr>
         <td><%= genre.name %></td>
         <td><%= genre.is_valid %></td>
-        <td><% link_to "編集する","/admin/genre/#{grene.id}/edit" %></td>
+        <td><%= link_to "編集する","/admin/genre/#{grene.id}/edit" %></td>
       </tr>
       <% end %>
     </tbody>

@@ -5,7 +5,6 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genres = Genre.all
     @genre = Genre.find{params[:id]}
   end
 
@@ -14,12 +13,17 @@ class Admin::GenresController < ApplicationController
     if @genre.save
       redirect_to ("/admin/genres")
     else
-      render_to :index
+      render :index
     end
   end
 
   def update
-    @genre.save
+    @genre = Genre.find(params[:id])
+    if @genre.update
+      redirect_to admin_genre_path
+    else
+      render :edit
+    end
   end
 
   private
